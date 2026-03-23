@@ -1,0 +1,92 @@
+/******* Header ***************/
+#top-header {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  padding: var(--spacing-md) var(--spacing-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.siteName a {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--color-white);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.siteName a:hover {
+  color: var(--color-primary);
+}
+
+#tools a {
+  color: var(--color-light-gray);
+  font-size: 0.9rem;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+#tools a:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/******* Navigation ***************/
+nav {
+  background-color: var(--color-dark-mid);
+  border-bottom: 3px solid var(--color-primary);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: var(--max-width);
+}
+
+nav ul li a {
+  display: block;
+  color: var(--color-white);
+  padding: 0.75rem var(--spacing-md);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+nav ul li a:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/******* Main Content ***************/
+main {
+  flex: 1;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-lg);
+}
+
+/******* Footer ***************/
+footer {
+  background-color: var(--color-dark);
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: 0.85rem;
+  margin-top: auto;
+}
+
+footer .copyright {
+  margin: 0;
+}

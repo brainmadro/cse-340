@@ -1,0 +1,36 @@
+
+<% if (title) { %>
+
+<div class="error-page">
+
+  <% if (title == 404) { %>
+
+    <div class="road-scene">
+      <div class="road-marks"></div>
+    </div>
+
+    <h1 class="error-code">4<span class="error-tire">🛞</span>4</h1>
+    <h2 class="error-heading">You've Driven Off the Map</h2>
+    <p class="error-message">
+      Our GPS is completely stumped. This page doesn't exist —
+      not even in our <em>used inventory</em>. Maybe it got recalled?
+    </p>
+    <p class="error-sub">Even the best drivers take a wrong turn sometimes.</p>
+
+  <% } else { %>
+
+    <div class="smoke-scene">💨💨💨</div>
+    <h1 class="error-code"><%= title %></h1>
+    <h2 class="error-heading">Engine Trouble</h2>
+    <p class="error-message"><%= message %></p>
+    <p class="error-sub">Our mechanics are on it. Please try again in a moment.</p>
+
+  <% } %>
+
+  <a href="/" class="error-btn">🏠 Take Me Home</a>
+
+</div>
+
+<% } else {
+  res.redirect('/')
+} %>

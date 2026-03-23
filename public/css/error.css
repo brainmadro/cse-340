@@ -1,0 +1,106 @@
+/******* Error Page ***************/
+.error-page {
+  text-align: center;
+  padding: 3rem 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.road-scene {
+  position: relative;
+  height: 80px;
+  background: #2c2c2c;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.road-marks {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 200%;
+  height: 6px;
+  margin-top: -3px;
+  background: repeating-linear-gradient(
+    to right,
+    #f5c518 0px,
+    #f5c518 40px,
+    transparent 40px,
+    transparent 80px
+  );
+  animation: road-scroll 1s linear infinite;
+}
+
+@keyframes road-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-80px); }
+}
+
+.error-code {
+  font-size: 6rem;
+  font-weight: 900;
+  color: var(--color-primary);
+  margin: 0 0 0.25rem;
+  line-height: 1;
+  letter-spacing: -4px;
+}
+
+.error-tire {
+  display: inline-block;
+  animation: spin-tire 1.5s linear infinite;
+}
+
+@keyframes spin-tire {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.error-heading {
+  font-size: 1.6rem;
+  color: var(--color-dark);
+  margin: 0 0 1rem;
+}
+
+.error-message {
+  font-size: 1.05rem;
+  color: var(--color-gray);
+  margin-bottom: 0.5rem;
+}
+
+.error-sub {
+  font-size: 0.9rem;
+  color: #999;
+  font-style: italic;
+  margin-bottom: 2rem;
+}
+
+.smoke-scene {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  animation: smoke-drift 2s ease-in-out infinite alternate;
+}
+
+@keyframes smoke-drift {
+  from { opacity: 0.5; transform: translateY(0); }
+  to   { opacity: 1; transform: translateY(-8px); }
+}
+
+.error-btn {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color var(--transition), transform var(--transition);
+}
+
+.error-btn:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}

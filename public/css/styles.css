@@ -1,6 +1,6 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
+@import url('variables.css');
+@import url('base.css');
+@import url('layout.css');
+@import url('inventory.css');
+@import url('error.css');
+@import url('responsive.css');

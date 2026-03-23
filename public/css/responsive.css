@@ -1,0 +1,40 @@
+/******* Responsive ***************/
+@media (max-width: 768px) {
+  #top-header {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-align: center;
+  }
+
+  .siteName a {
+    font-size: 1.3rem;
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+
+  nav ul li a {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  main {
+    padding: var(--spacing-md);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  #inv-display {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+  }
+}
+
+@media (max-width: 480px) {
+  #inv-display {
+    grid-template-columns: 1fr;
+  }
+}
