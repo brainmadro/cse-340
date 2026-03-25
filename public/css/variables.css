@@ -1,33 +1,28 @@
-/******* Change Box Model ***************/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-/******* CSS Custom Properties ***************/
 :root {
-  --color-primary: #c0392b;
-  --color-primary-dark: #96281b;
+  --color-border: #ddd;
   --color-dark: #1a1a1a;
   --color-dark-mid: #2c2c2c;
   --color-gray: #555;
   --color-light-gray: #f4f4f4;
-  --color-border: #ddd;
-  --color-white: #ffffff;
+  --color-primary: #c0392b;
+  --color-primary-dark: #96281b;
   --color-text: #222;
-
-  --font-heading: 'Georgia', serif;
-  --font-body: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
+  --color-white: #ffffff;
+  --font-body: 'Roboto', sans-serif;
+  --font-heading: 'Roboto Condensed', sans-serif;
   --max-width: 1200px;
-  --spacing-sm: 0.5rem;
-  --spacing-md: 1rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-
-  --radius: 4px;
+  --radius: 6px;
   --shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
   --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.18);
+  --spacing-lg: 2rem;
+  --spacing-md: 1rem;
+  --spacing-sm: 0.5rem;
+  --spacing-xl: 3rem;
   --transition: 0.2s ease;
 }

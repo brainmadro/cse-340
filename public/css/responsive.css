@@ -1,5 +1,26 @@
-/******* Responsive ***************/
 @media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  main {
+    padding: var(--spacing-md);
+  }
+
+  nav ul {
+    justify-content: center;
+  }
+
+  nav ul li a {
+    font-size: 0.85rem;
+    padding: 0.6rem 0.75rem;
+  }
+
+  #inv-display {
+    gap: var(--spacing-md);
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
   #top-header {
     flex-direction: column;
     gap: var(--spacing-sm);
@@ -8,28 +29,6 @@
 
   .siteName a {
     font-size: 1.3rem;
-  }
-
-  nav ul {
-    justify-content: center;
-  }
-
-  nav ul li a {
-    padding: 0.6rem 0.75rem;
-    font-size: 0.85rem;
-  }
-
-  main {
-    padding: var(--spacing-md);
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-
-  #inv-display {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--spacing-md);
   }
 }
 
