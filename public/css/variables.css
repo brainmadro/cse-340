@@ -5,14 +5,14 @@
 }
 
 :root {
-  --color-border: #ddd;
-  --color-dark: #1a1a1a;
-  --color-dark-mid: #2c2c2c;
-  --color-gray: #555;
-  --color-light-gray: #f4f4f4;
-  --color-primary: #c0392b;
-  --color-primary-dark: #96281b;
-  --color-text: #222;
+  --color-border: #d9d5d5;
+  --color-dark: #191919;
+  --color-dark-mid: #2e2e2e;
+  --color-gray: #9c9797;
+  --color-light-gray: #f2f2f2;
+  --color-primary: #ea3b3b;
+  --color-primary-dark: #c42d2d;
+  --color-text: #191919;
   --color-white: #ffffff;
   --font-body: 'Roboto', sans-serif;
   --font-heading: 'Roboto Condensed', sans-serif;

@@ -44,7 +44,7 @@
 }
 
 .error-sub {
-  color: #999;
+  color: var(--color-gray);
   font-size: 0.9rem;
   font-style: italic;
   margin-bottom: 2rem;
@@ -69,7 +69,7 @@
 
 .road-scene {
   align-items: center;
-  background: #2c2c2c;
+  background: var(--color-dark-mid);
   border-radius: 8px;
   display: flex;
   height: 80px;
