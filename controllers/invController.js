@@ -19,4 +19,22 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 }
 
+invCont.buildByInventoryId = async function (req, res, next) {
+  const inventory_id = req.params.inventoryId
+  const data = await invModel.getCarByInventoryId(inventory_id)
+  const details = await utilities.buildInvDetails(data)
+  let nav = await utilities.getNav()
+  res.render("./inventory/detail", {
+    title: data[0].inv_make + " " + data[0].inv_model,
+    nav,
+    details,
+  })
+}
+
+invCont.triggerError = async function(req, res, next) {
+  const error = new Error("Intentional 500 Error - This is a test of the error handling process.")
+  error.status = 500
+  next(error)
+}
+
 module.exports = invCont

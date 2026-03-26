@@ -57,9 +57,41 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
+Util.buildInvDetails = async function(data){
+  const v = data[0]
+  const priceAmount = new Intl.NumberFormat('en-US').format(v.inv_price)
+  const miles = new Intl.NumberFormat('en-US').format(v.inv_miles)
+  let details = '<div class="vehicle-detail">'
+
+  details += '<div class="vehicle-detail-image">'
+  details += '<img src="' + v.inv_image + '" alt="' + v.inv_year + ' ' + v.inv_make + ' ' + v.inv_model + '">'
+  details += '</div>'
+
+  details += '<div class="vehicle-detail-info">'
+  details += '<div class="detail-header">'
+  details += '<h1 class="detail-title">' + v.inv_year + ' ' + v.inv_make + ' ' + v.inv_model + '</h1>'
+  details += '<span class="detail-price">$' + priceAmount + '<sup class="price-cents">.00</sup></span>'
+  details += '</div>'
+  details += '<ul class="detail-specs">'
+  details += '<li><span class="detail-label">Make</span><span class="detail-value">' + v.inv_make + '</span></li>'
+  details += '<li><span class="detail-label">Model</span><span class="detail-value">' + v.inv_model + '</span></li>'
+  details += '<li><span class="detail-label">Year</span><span class="detail-value">' + v.inv_year + '</span></li>'
+  details += '<li><span class="detail-label">Color</span><span class="detail-value">' + v.inv_color + '</span></li>'
+  details += '<li><span class="detail-label">Mileage</span><span class="detail-value">' + miles + ' mi</span></li>'
+  details += '</ul>'
+  if (v.inv_description) {
+    details += '<p class="detail-description">' + v.inv_description + '</p>'
+  }
+  details += '<button class="own-today-btn">Own Today</button>'
+  details += '</div>'
+
+  details += '</div>'
+  return details
+}
+
 /* ****************************************
  * Middleware For Handling Errors
- * Wrap other function in this for 
+ * Wrap other function in this for
  * General Error Handling
  **************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)

@@ -38,6 +38,18 @@
   .sections-grid {
     grid-template-columns: 1fr;
   }
+
+  .vehicle-detail {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-detail-image {
+    position: static;
+  }
+
+.detail-specs {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {

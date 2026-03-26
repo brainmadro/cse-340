@@ -37,7 +37,7 @@
 
 .upgrade-card {
   background-color: var(--color-white);
-  border-radius: 8px;
+  border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
   text-align: center;

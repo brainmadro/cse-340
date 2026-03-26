@@ -78,18 +78,7 @@
   position: relative;
 }
 
-.smoke-scene {
-  animation: smoke-drift 2s ease-in-out infinite alternate;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
 @keyframes road-scroll {
   from { transform: translateX(0); }
   to   { transform: translateX(-80px); }
-}
-
-@keyframes smoke-drift {
-  from { opacity: 0.5; transform: translateY(0); }
-  to   { opacity: 1; transform: translateY(-8px); }
 }
