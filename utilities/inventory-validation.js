@@ -9,6 +9,7 @@ validate.classificationRules = () => {
   return [
     body("classification_name")
       .trim()
+      .escape()
       .notEmpty()
       .matches(/^[A-Za-z0-9]+$/)
       .withMessage("Classification name cannot contain spaces or special characters."),
@@ -45,12 +46,14 @@ validate.inventoryRules = () => {
 
     body("inv_make")
       .trim()
+      .escape()
       .notEmpty()
       .isLength({ min: 1 })
       .withMessage("Please provide a make."),
 
     body("inv_model")
       .trim()
+      .escape()
       .notEmpty()
       .isLength({ min: 1 })
       .withMessage("Please provide a model."),
@@ -63,18 +66,15 @@ validate.inventoryRules = () => {
 
     body("inv_description")
       .trim()
+      .escape()
       .notEmpty()
       .withMessage("Please provide a description."),
 
     body("inv_image")
-      .trim()
-      .notEmpty()
-      .withMessage("Please provide an image path."),
+      .trim(),
 
     body("inv_thumbnail")
-      .trim()
-      .notEmpty()
-      .withMessage("Please provide a thumbnail path."),
+      .trim(),
 
     body("inv_price")
       .trim()
@@ -90,6 +90,7 @@ validate.inventoryRules = () => {
 
     body("inv_color")
       .trim()
+      .escape()
       .notEmpty()
       .isLength({ min: 1 })
       .withMessage("Please provide a color."),
