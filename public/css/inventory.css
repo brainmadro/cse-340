@@ -64,6 +64,58 @@
   font-weight: bold;
 }
 
+.mgmt-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  list-style: none;
+  margin: var(--spacing-lg) 0;
+  max-width: 420px;
+  padding: 0;
+}
+
+.mgmt-actions li a {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--color-dark);
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: var(--spacing-md) var(--spacing-lg);
+  text-transform: uppercase;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.mgmt-actions li a:hover {
+  border-left-color: var(--color-primary-dark);
+  box-shadow: var(--shadow-hover);
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+.form-group select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.7rem var(--spacing-md);
+  transition: border-color var(--transition);
+}
+
+.form-group select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.form-group select:user-invalid {
+  border-color: #c0392b;
+}
+
 .notice {
   background-color: var(--color-light-gray);
   border-left: 4px solid var(--color-primary);
