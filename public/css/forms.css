@@ -1,0 +1,85 @@
+.form-container {
+  margin: 0 auto;
+  max-width: 420px;
+}
+
+.form-btn {
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  color: var(--color-white);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: var(--spacing-md);
+  padding: 0.85rem var(--spacing-lg);
+  text-transform: uppercase;
+  transition: background-color var(--transition);
+  width: 100%;
+}
+
+.form-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.form-link {
+  color: var(--color-gray);
+  font-size: 0.9rem;
+  margin-top: var(--spacing-md);
+  text-align: center;
+}
+
+.required {
+  color: var(--color-primary);
+}
+
+.required-note {
+  color: var(--color-gray);
+  font-size: 0.8rem;
+  margin-bottom: var(--spacing-md);
+  margin-top: calc(-1 * var(--spacing-sm));
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.form-group input,
+.form-group select {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 0.7rem var(--spacing-md);
+  transition: border-color var(--transition);
+}
+
+.form-hint {
+  color: var(--color-gray);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.form-group input:user-invalid,
+.form-group select:user-invalid {
+  border-color: #c0392b;
+}
+
+.form-group label {
+  color: var(--color-gray);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}

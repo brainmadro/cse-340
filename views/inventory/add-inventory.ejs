@@ -9,7 +9,7 @@
   </ul>
 <% } %>
 
-<form action="/inv/add-inventory" method="post" class="auth-form">
+<form action="/inv/add-inventory" method="post" class="form-container">
   <div class="form-group">
     <label for="classificationList">Classification <span class="required">*</span></label>
     <%- classificationList %>
@@ -61,8 +61,8 @@
   </div>
 
   <p class="required-note"><span class="required">*</span> Required fields</p>
-  <button type="submit" class="auth-btn">Add Vehicle</button>
-  <p class="auth-link"><a href="/inv">Back to Management</a></p>
+  <button type="submit" class="form-btn">Add Vehicle</button>
+  <p class="form-link"><a href="/inv">Back to Management</a></p>
 </form>
 
 <% } else { res.redirect('/') } %>

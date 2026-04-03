@@ -1,0 +1,38 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<%- messages() %>
+<% if (errors) { %>
+  <ul class="notice">
+ <% errors.array().forEach(error => { %>
+   <li><%= error.msg %></li>
+<%  }) %>
+ </ul>
+<% } %>
+
+<form action="/account/register" method="post" class="form-container">
+  <div class="form-group">
+    <label for="firstname">First Name <span class="required">*</span></label>
+    <input type="text" id="firstname" name="account_firstname" required autocomplete="given-name">
+  </div>
+  <div class="form-group">
+    <label for="lastname">Last Name <span class="required">*</span></label>
+    <input type="text" id="lastname" name="account_lastname" required autocomplete="family-name">
+  </div>
+  <div class="form-group">
+    <label for="email">Email <span class="required">*</span></label>
+    <input type="email" id="email" name="account_email" required autocomplete="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password <span class="required">*</span></label>
+    <input type="password" id="password" name="account_password" required autocomplete="new-password"
+      minlength="12"
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+      title="At least 12 characters, one uppercase letter, one number, and one special character">
+    <small class="form-hint">Min. 12 characters &mdash; must include an uppercase letter, a number, and a special character</small>
+  </div>
+  <p class="required-note"><span class="required">*</span> Required fields</p>
+  <button type="submit" class="form-btn">Create Account</button>
+  <p class="form-link">Already have an account? <a href="/account/login">Log In</a></p>
+</form>
+
+<% } else { res.redirect('/') } %>

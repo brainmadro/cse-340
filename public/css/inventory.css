@@ -98,24 +98,6 @@
   transform: translateX(4px);
 }
 
-.form-group select {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  padding: 0.7rem var(--spacing-md);
-  transition: border-color var(--transition);
-}
-
-.form-group select:focus {
-  border-color: var(--color-primary);
-  outline: none;
-}
-
-.form-group select:user-invalid {
-  border-color: #c0392b;
-}
-
 .notice {
   background-color: var(--color-light-gray);
   border-left: 4px solid var(--color-primary);

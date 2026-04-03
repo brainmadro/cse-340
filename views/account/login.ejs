@@ -1,0 +1,18 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<%- messages() %>
+
+<form id="loginForm" action="/account/login" method="post">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required autocomplete="email">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" required autocomplete="current-password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
+  </div>
+  <button type="submit" class="form-btn">Log In</button>
+  <p class="form-link">No account? <a href="/account/register">Sign Up</a></p>
+</form>
+
+<% } else { res.redirect('/') } %>

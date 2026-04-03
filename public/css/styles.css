@@ -5,5 +5,7 @@
 @import url('home.css');
 @import url('inventory.css');
 @import url('detail.css');
+@import url('auth.css');
+@import url('forms.css');
 @import url('error.css');
 @import url('responsive.css');
