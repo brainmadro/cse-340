@@ -53,6 +53,8 @@ invCont.buildAddInventory = async function (req, res, next) {
 
 invCont.addInventory = async function (req, res, next) {
   const body = req.body
+  if (!body.inv_image) body.inv_image = "/images/vehicles/no-image.png"
+  if (!body.inv_thumbnail) body.inv_thumbnail = "/images/vehicles/no-image-tn.png"
   const result = await invModel.addInventory(body)
   if (result.rowCount) {
     req.flash("notice", `The ${body.inv_year} ${body.inv_make} ${body.inv_model} was successfully added.`)
