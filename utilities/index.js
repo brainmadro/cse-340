@@ -80,7 +80,7 @@ Util.buildClassificationGrid = async function (data) {
 };
 
 Util.buildInvDetails = async function (data) {
-  const v = data[0];
+  const v = data;
   const priceAmount = new Intl.NumberFormat("en-US").format(v.inv_price);
   const miles = new Intl.NumberFormat("en-US").format(v.inv_miles);
   let details = '<div class="vehicle-detail">';

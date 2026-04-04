@@ -7,6 +7,7 @@ const invValidate = require("../utilities/inventory-validation")
 router.get("/", utilities.handleErrors(invController.buildManagement));
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryId));
+router.get("/edit/:inventory_id", utilities.handleErrors(invController.buildEditInventory));
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
