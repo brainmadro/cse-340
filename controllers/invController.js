@@ -71,11 +71,11 @@ invCont.addInventory = async function (req, res, next) {
   } else {
     req.flash("notice", "Sorry, the vehicle could not be added.")
     let nav = await utilities.getNav()
-    let classificationList = await utilities.buildClassificationList(body.classification_id)
+    let classificationSelect = await utilities.buildClassificationList(body.classification_id)
     res.status(501).render("inventory/add-inventory", {
       title: "Add Vehicle",
       nav,
-      classificationList,
+      classificationSelect,
       errors: null,
       ...body,
     })
