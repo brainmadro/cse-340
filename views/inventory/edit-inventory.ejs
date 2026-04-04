@@ -9,7 +9,7 @@
   </ul>
 <% } %>
 
-<form action="/inv/update-inventory" method="post" class="form-container">
+<form action="/inv/update/" method="post" class="form-container">
   <div class="form-group">
     <label for="classificationList">Classification <span class="required">*</span></label>
     <%- classificationSelect %>
@@ -63,6 +63,7 @@
   <p class="required-note"><span class="required">*</span> Required fields</p>
   <button type="submit" class="form-btn">Update Vehicle</button>
   <p class="form-link"><a href="/inv">Back to Management</a></p>
+  <input type="hidden" name="inv_id"<% if(locals.inv_id) { %> value="<%= locals.inv_id %>"<% } %>>
 </form>
 
 <% } else { res.redirect('/') } %>

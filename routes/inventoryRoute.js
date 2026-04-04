@@ -12,6 +12,11 @@ router.get("/add-inventory", utilities.handleErrors(invController.buildAddInvent
 router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 router.get("/trigger-error", utilities.handleErrors(invController.triggerError));
+router.post("/update/",
+  invValidate.newInventoryRules(),
+  invValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+)
 router.post(
   "/add-inventory",
   invValidate.inventoryRules(),

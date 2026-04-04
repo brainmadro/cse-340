@@ -118,4 +118,87 @@ validate.checkInventoryData = async (req, res, next) => {
   next();
 };
 
+/* **********************************
+ *  Update Inventory Validation Rules
+ * ********************************* */
+validate.newInventoryRules = () => {
+  return [
+    body("classification_id")
+      .notEmpty()
+      .withMessage("Please select a classification."),
+
+    body("inv_make")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a make."),
+
+    body("inv_model")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a model."),
+
+    body("inv_year")
+      .trim()
+      .notEmpty()
+      .isInt({ min: 1900, max: 2099 })
+      .withMessage("Please provide a valid 4-digit year."),
+
+    body("inv_description")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Please provide a description."),
+
+    body("inv_image")
+      .trim(),
+
+    body("inv_thumbnail")
+      .trim(),
+
+    body("inv_price")
+      .trim()
+      .notEmpty()
+      .isFloat({ min: 0 })
+      .withMessage("Please provide a valid price."),
+
+    body("inv_miles")
+      .trim()
+      .notEmpty()
+      .isInt({ min: 0 })
+      .withMessage("Please provide valid mileage."),
+
+    body("inv_color")
+      .trim()
+      .escape()
+      .notEmpty()
+      .isLength({ min: 1 })
+      .withMessage("Please provide a color."),
+  ];
+};
+
+/* ******************************
+ * Check data and return errors or continue to update inventory
+ * ***************************** */
+validate.checkUpdateData = async (req, res, next) => {
+  const { inv_id } = req.body;
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    let classificationSelect = await utilities.buildClassificationList();
+    res.render("inventory/edit-inventory", {
+      title: "Edit " + req.body.inv_make + " " + req.body.inv_model,
+      nav,
+      classificationSelect,
+      errors,
+      ...req.body,
+    });
+    return;
+  }
+  next();
+};
+
 module.exports = validate;
