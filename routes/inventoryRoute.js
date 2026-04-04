@@ -8,19 +8,20 @@ router.get("/", utilities.handleErrors(invController.buildManagement));
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
 router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryId));
 router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
+router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+router.get("/trigger-error", utilities.handleErrors(invController.triggerError));
 router.post(
   "/add-inventory",
   invValidate.inventoryRules(),
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
 );
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
 router.post(
   "/add-classification",
   invValidate.classificationRules(),
   invValidate.checkClassificationData,
   utilities.handleErrors(invController.addClassification)
 );
-router.get("/trigger-error", utilities.handleErrors(invController.triggerError));
 
 module.exports = router;

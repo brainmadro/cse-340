@@ -16,7 +16,7 @@ const cookieParser = require("cookie-parser")
 const expressLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
 
-//const accountRoute = require("./routes/accountRoute")
+const accountRoute = require("./routes/accountRoute")
 const inventoryRoute = require("./routes/inventoryRoute")
 
 const app = express()
@@ -44,6 +44,7 @@ app.use(function(req, res, next){
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(utilities.checkJWTToken)
 app.use(cookieParser())
 
 
@@ -64,7 +65,7 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
-//app.use("/account", accountRoute)
+app.use("/account", accountRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
