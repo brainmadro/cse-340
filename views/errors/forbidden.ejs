@@ -1,0 +1,16 @@
+<div class="error-page">
+  <h1 class="error-code">403</h1>
+  <h2 class="error-heading">Access Forbidden</h2>
+  <p class="error-message">You don't have permission to access this page.</p>
+
+  <% if (locals.loggedin) { %>
+    <p class="error-sub">You are logged in as <strong><%= locals.accountData.account_firstname %></strong>. This area requires a higher permission level.</p>
+    <a href="/account/logout" class="error-btn">Logout</a>
+    <p>or <a href="/account/login">log in with a different account</a></p>
+  <% } else { %>
+    <p class="error-sub">Please log in with an authorized account to access this area.</p>
+    <a href="/account/login" class="error-btn">Log In</a>
+  <% } %>
+
+  <a href="/" class="error-btn">Take Me Home</a>
+</div>

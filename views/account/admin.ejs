@@ -1,0 +1,66 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<%- messages() %>
+
+<p><a href="/account/create" class="form-btn">Create New Account</a></p>
+
+<% if (accounts && accounts.length > 0) { %>
+<table class="account-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Type</th>
+      <th>Created</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% accounts.forEach(account => { %>
+    <tr>
+      <td><%= account.account_firstname %> <%= account.account_lastname %></td>
+      <td><%= account.account_email %></td>
+      <td><%= account.account_type %></td>
+      <td><time class="local-date" datetime="<%= account.created_date %>"><%= account.created_date %></time></td>
+      <td class="action-cell">
+        <a href="/account/edit/<%= account.account_id %>" class="btn-sm btn-sm-edit">Edit</a>
+        <button class="btn-sm btn-sm-danger"
+          data-id="<%= account.account_id %>"
+          data-name="<%= account.account_firstname %> <%= account.account_lastname %>">
+          Delete
+        </button>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<% } else { %>
+<p class="notice">No accounts found.</p>
+<% } %>
+
+<dialog id="delete-dialog" class="confirm-dialog">
+  <h2>Confirm Deletion</h2>
+  <p>Are you sure you want to delete <strong id="delete-name"></strong>? This cannot be undone.</p>
+  <form action="/account/delete" method="post">
+    <input type="hidden" id="delete-account-id" name="account_id">
+    <button type="submit" class="btn-sm btn-sm-danger">Yes, Delete</button>
+    <button type="button" class="btn-sm btn-sm-edit" onclick="document.getElementById('delete-dialog').close()">Cancel</button>
+  </form>
+</dialog>
+
+<script>
+  document.querySelectorAll("time.local-date").forEach(el => {
+    const date = new Date(el.getAttribute("datetime"))
+    el.textContent = date.toLocaleDateString(undefined, { year: "numeric", month: "short", day: "numeric" })
+  })
+
+  document.querySelectorAll("button[data-id]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.getElementById("delete-name").textContent = btn.dataset.name
+      document.getElementById("delete-account-id").value = btn.dataset.id
+      document.getElementById("delete-dialog").showModal()
+    })
+  })
+</script>
+
+<% } else { res.redirect('/') } %>

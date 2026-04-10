@@ -208,16 +208,28 @@ Util.checkJWTToken = (req, res, next) => {
  }
 
 /* ****************************************
- *  Check Account Type
+ *  Check Account Type (Employee or Admin)
  * ************************************ */
-Util.checkAuthorization = (req, res, next) => {
+Util.checkAuthorization = async (req, res, next) => {
   if (res.locals.loggedin &&
     (res.locals.accountData.account_type === "Employee" ||
      res.locals.accountData.account_type === "Admin")) {
     next()
   } else {
-    req.flash("notice", "You do not have permission to access this resource. Please log in with an authorized account.")
-    return res.redirect("/account/login")
+    let nav = await Util.getNav()
+    res.status(403).render("errors/forbidden", { title: "403", nav })
+  }
+}
+
+/* ****************************************
+ *  Check Admin only
+ * ************************************ */
+Util.checkAdmin = async (req, res, next) => {
+  if (res.locals.loggedin && res.locals.accountData.account_type === "Admin") {
+    next()
+  } else {
+    let nav = await Util.getNav()
+    res.status(403).render("errors/forbidden", { title: "403", nav })
   }
 }
 

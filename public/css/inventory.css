@@ -16,11 +16,6 @@
   transition: transform var(--transition), box-shadow var(--transition);
 }
 
-#inv-display li:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-4px);
-}
-
 #inv-display li a img {
   height: 180px;
   object-fit: cover;
@@ -32,36 +27,136 @@
   opacity: 0.9;
 }
 
-.namePrice {
-  padding: var(--spacing-md);
+#inv-display li:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-4px);
 }
 
-.namePrice h2 {
-  font-size: 1.05rem;
+.account-table {
+  border-collapse: separate;
+  border-radius: var(--radius);
+  border-spacing: 0;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  width: 100%;
+}
+
+.account-table .action-cell {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.account-table .badge {
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.2rem 0.65rem;
+  text-transform: uppercase;
+}
+
+.account-table tbody tr:hover {
+  background-color: #e8e8e8;
+}
+
+.account-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.account-table tbody tr:nth-child(even) {
+  background-color: var(--color-light-gray);
+}
+
+.account-table td {
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-dark-mid);
+  font-size: 0.9rem;
+  padding: 0.85rem var(--spacing-md);
+  vertical-align: middle;
+}
+
+.account-table th {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  letter-spacing: 0.8px;
+  padding: 0.9rem var(--spacing-md);
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.account-table thead {
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.badge-admin    { background-color: #2e2e2e; color: #fff; }
+.badge-client   { background-color: #e0e0e0; color: #555; }
+.badge-employee { background-color: #1a6fc4; color: #fff; }
+
+.btn-sm {
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 0.35rem 0.8rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color var(--transition);
+}
+
+.btn-sm-danger {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  margin-left: 0.4rem;
+}
+
+.btn-sm-danger:hover { background-color: var(--color-primary-dark); }
+
+.btn-sm-edit {
+  background-color: var(--color-dark-mid);
+  color: var(--color-white);
+}
+
+.btn-sm-edit:hover { background-color: var(--color-dark); }
+
+dialog.confirm-dialog {
+  border: none;
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+  height: fit-content;
+  inset: 0;
+  margin: auto;
+  max-width: 400px;
+  overflow: auto;
+  padding: var(--spacing-lg);
+  position: fixed;
+  width: 90%;
+}
+
+dialog.confirm-dialog form {
+  display: flex;
+  gap: var(--spacing-sm);
+  justify-content: flex-end;
+}
+
+dialog.confirm-dialog h2 {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
   margin-bottom: var(--spacing-sm);
 }
 
-.namePrice h2 a {
-  color: var(--color-dark);
-  font-family: var(--font-body);
-  font-weight: 600;
+dialog.confirm-dialog p {
+  color: var(--color-gray);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-lg);
 }
 
-.namePrice h2 a:hover {
-  color: var(--color-primary);
-}
-
-.namePrice hr {
-  border: none;
-  border-top: 2px solid var(--color-primary);
-  margin: 0 0 var(--spacing-sm) 0;
-}
-
-.namePrice span {
-  color: var(--color-primary);
-  display: inline-block;
-  font-size: 1.15rem;
-  font-weight: bold;
+dialog.confirm-dialog::backdrop {
+  background: rgba(0,0,0,0.45);
 }
 
 .mgmt-actions {
@@ -96,6 +191,38 @@
   box-shadow: var(--shadow-hover);
   color: var(--color-primary);
   transform: translateX(4px);
+}
+
+.namePrice {
+  padding: var(--spacing-md);
+}
+
+.namePrice h2 {
+  font-size: 1.05rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.namePrice h2 a {
+  color: var(--color-dark);
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.namePrice h2 a:hover {
+  color: var(--color-primary);
+}
+
+.namePrice hr {
+  border: none;
+  border-top: 2px solid var(--color-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.namePrice span {
+  color: var(--color-primary);
+  display: inline-block;
+  font-size: 1.15rem;
+  font-weight: bold;
 }
 
 .notice {

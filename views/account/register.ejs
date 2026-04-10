@@ -30,6 +30,13 @@
       pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
       title="At least 12 characters, one uppercase letter, one number, and one special character">
   </div>
+  <div class="form-group">
+    <label for="account_password_confirm">Confirm Password <span class="required">*</span></label>
+    <input type="password" id="account_password_confirm" name="account_password_confirm" required autocomplete="new-password"
+      minlength="12"
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+      title="Must match the password above">
+  </div>
   <p class="required-note"><span class="required">*</span> Required fields</p>
   <button type="submit" class="form-btn">Create Account</button>
   <p class="form-link">Already have an account? <a href="/account/login">Log In</a></p>

@@ -9,7 +9,7 @@
   </ul>
 <% } %>
 
-<form action="/account/update/" method="post" class="form-container">
+<form action="/account/create" method="post" class="form-container">
   <div class="form-group">
     <label for="accountFirstname">First Name <span class="required">*</span></label>
     <input type="text" id="accountFirstname" name="account_firstname" required
@@ -28,27 +28,34 @@
       value="<%= locals.account_email || '' %>">
   </div>
 
-  <input type="hidden" name="account_id" value="<%= locals.account_id %>">
-  <p class="required-note"><span class="required">*</span> Required fields</p>
-  <button type="submit" class="form-btn">Update Account</button>
-</form>
-
-<form action="/account/update-password/" method="post" class="form-container">
   <div class="form-group">
-    <label for="accountPassword">New Password <span class="required">*</span></label>
-    <p class="form-note">Entering a new password will replace your current one. Password must be at least 12 characters and contain at least 1 uppercase letter, 1 number, and 1 special character.</p>
+    <label for="accountType">Account Type <span class="required">*</span></label>
+    <select id="accountType" name="account_type" required>
+      <option value="">Select a type</option>
+      <option value="Client" <%= (locals.account_type === 'Client') ? 'selected' : '' %>>Client</option>
+      <option value="Employee" <%= (locals.account_type === 'Employee') ? 'selected' : '' %>>Employee</option>
+      <option value="Admin" <%= (locals.account_type === 'Admin') ? 'selected' : '' %>>Admin</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="accountPassword">Password <span class="required">*</span></label>
+    <span class="form-hint">At least 12 characters, 1 uppercase, 1 number, 1 special character.</span>
     <input type="password" id="accountPassword" name="account_password" required
+      minlength="12"
       pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
   </div>
+
   <div class="form-group">
-    <label for="account_password_confirm">Confirm New Password <span class="required">*</span></label>
+    <label for="account_password_confirm">Confirm Password <span class="required">*</span></label>
     <input type="password" id="account_password_confirm" name="account_password_confirm" required
-      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
-      title="Must match the new password above">
+      minlength="12"
+      pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$">
   </div>
 
-  <input type="hidden" name="account_id" value="<%= locals.account_id %>">
-  <button type="submit" class="form-btn">Change Password</button>
+  <p class="required-note"><span class="required">*</span> Required fields</p>
+  <button type="submit" class="form-btn">Create Account</button>
+  <p class="form-link"><a href="/account/admin">Back to Account Management</a></p>
 </form>
 
 <% } else { res.redirect('/') } %>

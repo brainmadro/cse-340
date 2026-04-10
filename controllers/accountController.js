@@ -210,4 +210,97 @@ function accountLogout(req, res) {
   res.redirect("/")
 }
 
-module.exports = { buildAccountManagement, buildLogin, buildRegister, registerAccount, accountLogin, buildUpdateAccount, updateAccount, updatePassword, accountLogout }
+/* ****************************************
+ *  Deliver admin account management view
+ * ************************************ */
+async function buildAdminManagement(req, res, next) {
+  let nav = await utilities.getNav()
+  const accounts = await accountModel.getAllAccounts()
+  res.render("account/admin", { title: "Account Management", nav, accounts, errors: null })
+}
+
+/* ****************************************
+ *  Deliver admin create account view
+ * ************************************ */
+async function buildAdminCreate(req, res, next) {
+  let nav = await utilities.getNav()
+  res.render("account/admin-create", { title: "Create Account", nav, errors: null })
+}
+
+/* ****************************************
+ *  Process admin create account
+ * ************************************ */
+async function adminCreateAccount(req, res, next) {
+  let nav = await utilities.getNav()
+  const { account_firstname, account_lastname, account_email, account_password, account_type } = req.body
+  let hashedPassword
+  try {
+    hashedPassword = await bcrypt.hash(account_password, 10)
+  } catch (error) {
+    req.flash("notice", "Sorry, there was an error processing the registration.")
+    return res.status(500).render("account/admin-create", { title: "Create Account", nav, errors: null })
+  }
+  const result = await accountModel.adminCreateAccount(account_firstname, account_lastname, account_email, hashedPassword, account_type)
+  if (result) {
+    req.flash("notice", `Account for ${account_firstname} ${account_lastname} was successfully created.`)
+    res.redirect("/account/admin")
+  } else {
+    req.flash("notice", "Sorry, the account could not be created.")
+    res.status(501).render("account/admin-create", { title: "Create Account", nav, errors: null, account_firstname, account_lastname, account_email, account_type })
+  }
+}
+
+/* ****************************************
+ *  Deliver admin edit account view
+ * ************************************ */
+async function buildAdminEdit(req, res, next) {
+  const account_id = parseInt(req.params.account_id)
+  let nav = await utilities.getNav()
+  const accountData = await accountModel.getAccountById(account_id)
+  if (!accountData) {
+    req.flash("notice", "Account not found.")
+    return res.redirect("/account/admin")
+  }
+  res.render("account/admin-edit", {
+    title: "Edit Account",
+    nav,
+    errors: null,
+    account_id: accountData.account_id,
+    account_firstname: accountData.account_firstname,
+    account_lastname: accountData.account_lastname,
+    account_email: accountData.account_email,
+    account_type: accountData.account_type,
+  })
+}
+
+/* ****************************************
+ *  Process admin edit account
+ * ************************************ */
+async function adminEditAccount(req, res, next) {
+  let nav = await utilities.getNav()
+  const { account_firstname, account_lastname, account_email, account_type, account_id } = req.body
+  const result = await accountModel.adminUpdateAccount(account_firstname, account_lastname, account_email, account_type, account_id)
+  if (result) {
+    req.flash("notice", `${result.account_firstname} ${result.account_lastname}'s account was successfully updated.`)
+    res.redirect("/account/admin")
+  } else {
+    req.flash("notice", "Sorry, the update failed.")
+    res.status(501).render("account/admin-edit", { title: "Edit Account", nav, errors: null, account_id, account_firstname, account_lastname, account_email, account_type })
+  }
+}
+
+/* ****************************************
+ *  Process admin delete account
+ * ************************************ */
+async function adminDeleteAccount(req, res, next) {
+  const account_id = parseInt(req.body.account_id)
+  const result = await accountModel.adminDeleteAccount(account_id)
+  if (result) {
+    req.flash("notice", "The account was successfully deleted.")
+  } else {
+    req.flash("notice", "Sorry, the delete failed.")
+  }
+  res.redirect("/account/admin")
+}
+
+module.exports = { buildAccountManagement, buildLogin, buildRegister, registerAccount, accountLogin, buildUpdateAccount, updateAccount, updatePassword, accountLogout, buildAdminManagement, buildAdminCreate, adminCreateAccount, buildAdminEdit, adminEditAccount, adminDeleteAccount }

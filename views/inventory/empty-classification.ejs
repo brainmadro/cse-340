@@ -1,0 +1,11 @@
+<% if (title) { %>
+<h1><%= title %></h1>
+<%- messages() %>
+
+<div class="notice">
+  <p>There are currently no vehicles in this classification.</p>
+  <p>Please check back later or browse another category.</p>
+  <a href="/">Return Home</a>
+</div>
+
+<% } else { res.redirect('/') } %>
